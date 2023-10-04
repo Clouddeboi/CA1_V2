@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimeCounter = 0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Joystick1Button2)&& canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash || Input.GetKeyDown(KeyCode.Joystick1Button2)&& canDash)//FINALLY FIXED THIS ISSUE IM SUCH A DUMBASS HDYISBHUBHBVHGIYUUG
         {
             StartCoroutine(Dash());
         }
@@ -185,15 +185,15 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        float originalGravity = rb.gravityScale;
-        rb.gravityScale = 0f;
+        float originalGravity = rb.gravityScale;//this is because we dont want our player to be affected by gravity while dashing
+        rb.gravityScale = 0f;//variable that stores gravity since we want to apply concept above^
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);//indicates direction player is facing
-        tr.emitting = true;
-        yield return new WaitForSeconds(dashingTime);
-        tr.emitting = false;
-        rb.gravityScale = originalGravity;
-        isDashing = false;
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
+        tr.emitting = true;//emits trail
+        yield return new WaitForSeconds(dashingTime);//stop dashing for a few secs
+        tr.emitting = false;//trail emitting off
+        rb.gravityScale = originalGravity;//sets gravity back to original
+        isDashing = false;//we cant dash
+        yield return new WaitForSeconds(dashingCooldown);//waits for a few seconds(correspondng to dashing cooldown)
+        canDash = true;//sets can dash back to true afterwards
     }
 }
