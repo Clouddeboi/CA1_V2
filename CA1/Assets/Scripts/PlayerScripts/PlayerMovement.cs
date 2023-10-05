@@ -34,12 +34,43 @@ public class PlayerMovement : MonoBehaviour
     private float dashingTime = 0.2f;//time spent dashing
     private float dashingCooldown = 1f;//cooldown of dash ability
 
+    //respawn and death variables
+    Vector2 CheckpointPos;//players starting position(Edit: Changed to checkpoint position, its only starting pos at the start of the game)
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private TrailRenderer tr;
     [SerializeField] private Transform wallcheck;
     [SerializeField] private LayerMask wallLayer;
+
+    private void Start()
+    {
+        CheckpointPos = transform.position;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Obstacle"))
+        {
+            Die();
+        }
+    }
+
+    public void UpdateCheckpoint(Vector2 pos)
+    {
+        CheckpointPos = pos;
+    }
+
+    void Die()
+    {
+        Respawn();
+    }
+
+    void Respawn()
+    {
+        transform.position = CheckpointPos; 
+    }
     // Update is called once per frame
     private void Update()
     {
