@@ -44,9 +44,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform wallcheck;
     [SerializeField] private LayerMask wallLayer;
 
+    //video follwed for death and respawn https://www.youtube.com/watch?v=odStG_LfPMQ&ab_channel=RehopeGames
     private void Start()
     {
         CheckpointPos = transform.position;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
