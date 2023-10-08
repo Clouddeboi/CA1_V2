@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {//variables
     //basic movement and jump variables (Video Reference/Guide Follow: https://www.youtube.com/watch?v=K1xZ-rycYY8)
-
     private float horizontal;
     private float speed = 8f;
     private float jumpingPower = 16f;
@@ -76,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
         if (isDashing)
         {
             return;
