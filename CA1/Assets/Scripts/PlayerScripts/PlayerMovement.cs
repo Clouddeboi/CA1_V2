@@ -43,6 +43,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform wallcheck;
     [SerializeField] private LayerMask wallLayer;
 
+    AudioManager AudioManager;
+
+    private void Awake()
+    {
+        AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     //video follwed for death and respawn https://www.youtube.com/watch?v=odStG_LfPMQ&ab_channel=RehopeGames
     private void Start()
     {
@@ -78,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isDashing)
         {
+            AudioManager.PlaySFX(AudioManager.Dash);
             return;
         }
         
@@ -94,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (coyoteTimeCounter > 0f && Input.GetButtonDown("Jump"))//check if coyote time is greater than 0 and if jump button is pressed
         {
+            AudioManager.PlaySFX(AudioManager.Jump);
             doubleJump = false;
 
         }
@@ -102,8 +111,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (coyoteTimeCounter > 0f || doubleJump)
             {
+                AudioManager.PlaySFX(AudioManager.Jump);
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-
                 doubleJump = !doubleJump;
             }
         }
@@ -182,6 +191,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
         {
+            AudioManager.PlaySFX(AudioManager.Jump);
             isWallJumping = true;
             rb.velocity = new Vector2(WallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
             wallJumpingCounter = 0f;//prevents spamming jump button
