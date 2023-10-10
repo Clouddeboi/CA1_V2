@@ -8,6 +8,12 @@ public class PlayerTeleport : MonoBehaviour
 
     //variables
     private GameObject currentTeleporter;
+    AudioManager AudioManager;
+
+    private void Awake()
+    {
+        AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void Update()
     {
@@ -24,6 +30,7 @@ public class PlayerTeleport : MonoBehaviour
     {
         if(collision.CompareTag("Teleporter"))//checks if tag collided with is teleporter
         {
+            AudioManager.PlaySFX(AudioManager.Teleporter);
             currentTeleporter = collision.gameObject;
         }
 

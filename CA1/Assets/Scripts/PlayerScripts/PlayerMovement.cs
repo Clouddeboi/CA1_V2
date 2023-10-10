@@ -63,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collision.CompareTag("Obstacle"))
         {
+            AudioManager.PlaySFX(AudioManager.Death);
             Die();
         }
     }
@@ -87,7 +88,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (isDashing)
         {
-            AudioManager.PlaySFX(AudioManager.Dash);
             return;
         }
         
@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(IsGrounded())
         {
-            animator.SetBool("IsJumping",false);
+            animator.SetBool("IsJumping",false);//dont do jumping animation if grounded
             coyoteTimeCounter = coyoteTime;//if we are grounded set the time counter to the coyote time
         }
         else
@@ -130,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash || Input.GetKeyDown(KeyCode.Joystick1Button2)&& canDash)//FINALLY FIXED THIS ISSUE IM SUCH A DUMBASS HDYISBHUBHBVHGIYUUG
         {
+            AudioManager.PlaySFX(AudioManager.Dash);
             StartCoroutine(Dash());
         }
 
@@ -162,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsWalled()
    {
-        return Physics2D.OverlapCircle(wallcheck.position, 0.2f, wallLayer);//checks if the player is colliding with a wall
+        return Physics2D.OverlapCircle(wallcheck.position, 0.2f, wallLayer);//checks if the player is colliding with a wall     
    }
 
    private void WallSlide()
@@ -197,6 +198,7 @@ public class PlayerMovement : MonoBehaviour
         {
             AudioManager.PlaySFX(AudioManager.Jump);
             isWallJumping = true;
+            doubleJump = true;//this is so we can double jump off the walls
             rb.velocity = new Vector2(WallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
             wallJumpingCounter = 0f;//prevents spamming jump button
 
