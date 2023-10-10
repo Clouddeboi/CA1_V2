@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {//variables
+    //Animations variables (Video followed: https://www.youtube.com/watch?v=hkaysu1Z-N8&t=567s)
+    public Animator animator;
     //basic movement and jump variables (Video Reference/Guide Follow: https://www.youtube.com/watch?v=K1xZ-rycYY8)
     private float horizontal;
     private float speed = 8f;
@@ -90,9 +92,11 @@ public class PlayerMovement : MonoBehaviour
         }
         
         horizontal = Input.GetAxisRaw("Horizontal");
+        animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
         if(IsGrounded())
         {
+            animator.SetBool("IsJumping",false);
             coyoteTimeCounter = coyoteTime;//if we are grounded set the time counter to the coyote time
         }
         else
@@ -104,7 +108,6 @@ public class PlayerMovement : MonoBehaviour
         {
             AudioManager.PlaySFX(AudioManager.Jump);
             doubleJump = false;
-
         }
 
         if (Input.GetButtonDown("Jump")) 
@@ -112,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
             if (coyoteTimeCounter > 0f || doubleJump)
             {
                 AudioManager.PlaySFX(AudioManager.Jump);
+                animator.SetBool("IsJumping",true);
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
                 doubleJump = !doubleJump;
             }
@@ -120,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)//allows the player to jump higher by pressing the jump button(space) longer by multiply it by 0.5
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-
+            animator.SetBool("IsJumping",true);
             coyoteTimeCounter = 0f;
         }
 
