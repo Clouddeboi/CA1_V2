@@ -128,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimeCounter = 0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash || Input.GetKeyDown(KeyCode.Joystick1Button2)&& canDash)//FINALLY FIXED THIS ISSUE IM SUCH A DUMBASS HDYISBHUBHBVHGIYUUG
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash || Input.GetButtonDown("Fire3")&& canDash)//FINALLY FIXED THIS ISSUE IM SUCH A DUMBASS HDYISBHUBHBVHGIYUUG
         {
             AudioManager.PlaySFX(AudioManager.Dash);
             StartCoroutine(Dash());

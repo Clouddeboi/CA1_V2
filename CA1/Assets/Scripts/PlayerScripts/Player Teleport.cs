@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerTeleport : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class PlayerTeleport : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Joystick1Button3))//If button E is press or Y on controller (Im using Xbox controls as reference)
+        if(Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire2"))//If button E is press or Y on controller (Im using Xbox controls as reference)
         {
             if(currentTeleporter != null)//checks if current teleporter is not null
             {
