@@ -9,6 +9,11 @@ public class MainMenu : MonoBehaviour
     //And also learned how to make the buttons from flappy bird game which me worked on in class
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(1);//loads next scene
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();//Closes application
     }
 }
