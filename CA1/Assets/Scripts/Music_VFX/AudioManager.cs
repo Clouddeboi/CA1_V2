@@ -13,8 +13,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip Jump;
     public AudioClip Dash;
     public AudioClip Death;
-    public AudioClip WallJumping;
-    public AudioClip WallSliding;
     public AudioClip JumpPad;
     public AudioClip Teleporter;
 

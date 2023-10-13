@@ -13,12 +13,15 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   //prevents timer going into -numbers
-        if(remainingTime < 0)
+        if(remainingTime > 0)
+        {
+            remainingTime -= Time.deltaTime;
+        }
+        else if(remainingTime < 0)
         {
             remainingTime = 0;
         }
         //remaining time maths for better format (min & secs)
-        remainingTime -= Time.deltaTime;
         int minutes = Mathf.FloorToInt(remainingTime / 60);
         int seconds = Mathf.FloorToInt(remainingTime % 60);
 
