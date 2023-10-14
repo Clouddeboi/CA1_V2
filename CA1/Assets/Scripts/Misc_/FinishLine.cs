@@ -7,11 +7,12 @@ public class FinishLine : MonoBehaviour
 {
     //video followed: https://www.youtube.com/watch?v=Q90cUrm4LYo&ab_channel=HackingtonsCodeSchool 
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")//if object collided is tagged as player
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Time.timeScale = 1;
         }
     }
 }

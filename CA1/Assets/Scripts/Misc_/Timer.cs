@@ -13,11 +13,11 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   //prevents timer going into -numbers
-        if(remainingTime > 0)
+        if(remainingTime > 0)//if time is greater than 0 keep counting down as normal
         {
             remainingTime -= Time.deltaTime;
         }
-        else if(remainingTime < 0)
+        else if(remainingTime < 0)//else set time remaining to 0
         {
             remainingTime = 0;
         }
@@ -27,4 +27,11 @@ public class Timer : MonoBehaviour
 
         timerText.text = String.Format("{0:00}:{1:00}", minutes, seconds);
     }
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if(collision.CompareTag("Finish Line"))
+    //     {
+    //         remainingTime = Time.deltaTime;
+    //     }
+    // }
 }
