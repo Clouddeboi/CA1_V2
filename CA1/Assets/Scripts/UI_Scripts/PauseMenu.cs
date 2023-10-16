@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);//pauses the game vy setting the butto to true
         Time.timeScale = 0;//pauses time
     }
-    public void MainMenu()//return to main menu button
+    public void MainMenu()//return to main menu button- this button is also reused for the game over screen
     {
         SceneManager.LoadScene("MainMenu");//loads the main menu scene
         Time.timeScale = 1;//sets time back to normal from pause
@@ -23,7 +23,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);//sets the pause menu to false and lets us play the game again
         Time.timeScale = 1;//sets time back to normal from pause
     }
-    public void Restart()//restart level
+    public void Restart()//restart level- this button is also used for the game over screen
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);//gets the active scene from the build index and restarts it
         Time.timeScale = 1;//sets time back to normal from pause
