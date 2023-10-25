@@ -8,23 +8,25 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource SFXSource;
 
     [Header("-----------Audio Clip----------")]
-    public AudioClip Background;
-    public AudioClip Jump;
+    public AudioClip Background;//background song
+    public AudioClip Jump;//jumping sound
     public AudioClip Dash;
     public AudioClip Death;
     public AudioClip JumpPad;
     public AudioClip Teleporter;
+    public AudioClip ButtonClick;//on every button click excluding start and restart
+    public AudioClip StartButtonClick;
 
-    private void Start()
+    private void Start()//will always play this clip from the start of the game
     {
         musicSource.clip = Background;
-        musicSource.loop = true;
+        musicSource.loop = true;//loops track
         musicSource.Play();
     }
 
     public void PlaySFX(AudioClip clip)
     {
-        SFXSource.PlayOneShot(clip);
+        SFXSource.PlayOneShot(clip);//plays the clip once when called
     }
 
 }

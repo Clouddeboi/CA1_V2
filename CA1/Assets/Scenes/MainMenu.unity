@@ -460,6 +460,8 @@ MonoBehaviour:
   Death: {fileID: 8300000, guid: 553b042357d4ec64f9a16bae52988d71, type: 3}
   JumpPad: {fileID: 8300000, guid: 7c520fb06840ebf4a94e58de40620719, type: 3}
   Teleporter: {fileID: 8300000, guid: ec8801cf42144cc43ae73537e532f4f5, type: 3}
+  ButtonClick: {fileID: 8300000, guid: 633d622c1f2d99b488e3265f9d207e3d, type: 3}
+  StartButtonClick: {fileID: 8300000, guid: 1dbe0bcdf77900c459dfe53918deed27, type: 3}
 --- !u!4 &228457611
 Transform:
   m_ObjectHideFlags: 0

@@ -156,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
+    private bool IsGrounded()//checks if player is grounded
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
@@ -176,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else 
         {
-            isWallSliding = false;
+            isWallSliding = false;//else set to false
         }
    }
 
@@ -184,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
    {
         if(isWallSliding)
         {
-            isWallJumping = false;
+            isWallJumping = false;//if we are wall sliding we are not wall jumping
             WallJumpingDirection = -transform.localScale.x;//flips the direction that the player is facing
             wallJumpingCounter = wallJumpingTime;
             CancelInvoke(nameof(StopWallJumping));//cancels method if player is wall sliding

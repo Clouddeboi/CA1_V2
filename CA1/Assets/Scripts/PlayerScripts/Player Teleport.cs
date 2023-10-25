@@ -20,6 +20,7 @@ public class PlayerTeleport : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire2"))//If button E is press or Y on controller (Im using Xbox controls as reference)
         {
+            AudioManager.PlaySFX(AudioManager.Teleporter);
             if(currentTeleporter != null)//checks if current teleporter is not null
             {
                 transform.position = currentTeleporter.GetComponent<Teleporter>().GetDestination().position;//changes poosition to matching teleporter
@@ -31,7 +32,6 @@ public class PlayerTeleport : MonoBehaviour
     {
         if(collision.CompareTag("Teleporter"))//checks if tag collided with is teleporter
         {
-            AudioManager.PlaySFX(AudioManager.Teleporter);
             currentTeleporter = collision.gameObject;
         }
 

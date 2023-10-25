@@ -5,13 +5,13 @@ using UnityEngine.UI;
 public class VolumeSettings : MonoBehaviour
 {
     //video tutorial followed: https://www.youtube.com/watch?v=G-JUp8AMEx0&ab_channel=RehopeGames
-    [SerializeField] private AudioMixer myMixer;
-    [SerializeField] private Slider musicSlider;
-    [SerializeField] private Slider SFXSlider;
+    [SerializeField] private AudioMixer myMixer;//accesses audio mixer
+    [SerializeField] private Slider musicSlider;//access music slider
+    [SerializeField] private Slider SFXSlider;//accesses SFX slider
     
     private void Start()
     {
-        if(PlayerPrefs.HasKey("musicVolume"))
+        if(PlayerPrefs.HasKey("musicVolume"))//loads players prefered volume
         {
             LoadVolume();
         }
@@ -38,7 +38,7 @@ public class VolumeSettings : MonoBehaviour
 
     private void LoadVolume()
     {
-        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");//equates stored value to the value of the slider
         SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
 
         SetMusicVolume();
